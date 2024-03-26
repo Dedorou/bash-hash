@@ -1,4 +1,4 @@
-module bash_s_param #(
+module bash_s #(
 parameter [5 : 0] m1 = 56,
 parameter [5 : 0] n1 = 51,
 parameter [5 : 0] m2 = 34,
