@@ -3,8 +3,10 @@
 module bash_f_stage #(
 //parameter [63 : 0] c = 64'h7bc9de0dceb2e860
 )(
+input  logic            clk,
+input  logic [63 : 0]   c,
 input  logic [1535 : 0] data_i,
-input  logic [63 : 0] c,
+
 output logic [1535 : 0] data_o
 );
 
@@ -35,36 +37,43 @@ generate
   end    
 endgenerate
 
-assign data_o = {s_o[15], s_o[10], s_o[9],  s_o[12], s_o[11], s_o[14],
-                 s_o[13], s_o[8],  s_o[17], s_o[16], s_o[19], s_o[18],
-                 s_o[21], s_o[20], s_o[23], s_o[22], s_o[6],  s_o[3],
-                 s_o[0],  s_o[5],  s_o[2],  s_o[7],  s_o[4],  (s_o[1] ^ c)};
+always_ff @(posedge clk) begin
+  data_o <= {s_o[15], s_o[10], s_o[9],  s_o[12], s_o[11], s_o[14],
+             s_o[13], s_o[8],  s_o[17], s_o[16], s_o[19], s_o[18],
+             s_o[21], s_o[20], s_o[23], s_o[22], s_o[6],  s_o[3],
+             s_o[0],  s_o[5],  s_o[2],  s_o[7],  s_o[4],  s_o[1] ^ c};  
+end
 
-logic [63 : 0] s_res [0 : 23];
-assign s_res[0]  = s_o[15];
-assign s_res[1]  = s_o[10];
-assign s_res[2]  = s_o[9];
-assign s_res[3]  = s_o[12];
-assign s_res[4]  = s_o[11];
-assign s_res[5]  = s_o[14];
-assign s_res[6]  = s_o[13];
-assign s_res[7]  = s_o[8];
-assign s_res[8]  = s_o[17];
-assign s_res[9]  = s_o[16];
-assign s_res[10] = s_o[19];
-assign s_res[11] = s_o[18];
-assign s_res[12] = s_o[21];
-assign s_res[13] = s_o[20];
-assign s_res[14] = s_o[23];
-assign s_res[15] = s_o[22];
-assign s_res[16] = s_o[6];
-assign s_res[17] = s_o[3];
-assign s_res[18] = s_o[0];
-assign s_res[19] = s_o[5];
-assign s_res[20] = s_o[2];
-assign s_res[21] = s_o[7];
-assign s_res[22] = s_o[4];
-assign s_res[23] = s_o[1] ^ c;
+//assign data_o = {s_o[15], s_o[10], s_o[9],  s_o[12], s_o[11], s_o[14],
+//                 s_o[13], s_o[8],  s_o[17], s_o[16], s_o[19], s_o[18],
+//                 s_o[21], s_o[20], s_o[23], s_o[22], s_o[6],  s_o[3],
+//                 s_o[0],  s_o[5],  s_o[2],  s_o[7],  s_o[4],  (s_o[1] ^ c)};
+
+//logic [63 : 0] s_res [0 : 23];
+//assign s_res[0]  = s_o[15];
+//assign s_res[1]  = s_o[10];
+//assign s_res[2]  = s_o[9];
+//assign s_res[3]  = s_o[12];
+//assign s_res[4]  = s_o[11];
+//assign s_res[5]  = s_o[14];
+//assign s_res[6]  = s_o[13];
+//assign s_res[7]  = s_o[8];
+//assign s_res[8]  = s_o[17];
+//assign s_res[9]  = s_o[16];
+//assign s_res[10] = s_o[19];
+//assign s_res[11] = s_o[18];
+//assign s_res[12] = s_o[21];
+//assign s_res[13] = s_o[20];
+//assign s_res[14] = s_o[23];
+//assign s_res[15] = s_o[22];
+//assign s_res[16] = s_o[6];
+//assign s_res[17] = s_o[3];
+//assign s_res[18] = s_o[0];
+//assign s_res[19] = s_o[5];
+//assign s_res[20] = s_o[2];
+//assign s_res[21] = s_o[7];
+//assign s_res[22] = s_o[4];
+//assign s_res[23] = s_o[1] ^ c;
 
 endmodule
 //8a80b92f4046b0b973634ee851bcc77eec0c5b1e9f1e6f38d31ff8d18d726e80a65194c0ec2c8a42a6b27b739f8a4a592f9e8d6c2b75d796285bf179484749d452c38401b625a6cfa1c6be5e8f4e68aa0fc5a6c2d4a13b484bebec615fde723282c8a6c9246355f94e599c6e7b6b079a83cb9e8b0d4eb273da84581a2dad6e36...
