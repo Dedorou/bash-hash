@@ -77,22 +77,22 @@ logic cu2regmap_rdy;
 logic regmap2cu_prep;
 logic regmap2cu_start;
 
-assign regmap2hash_x0  = {regmap2hash_x[(XLEN*0)+:XLEN],  regmap2hash_x[(XLEN*1)+:XLEN]};
-assign regmap2hash_x1  = {regmap2hash_x[(XLEN*2)+:XLEN],  regmap2hash_x[(XLEN*3)+:XLEN]};
-assign regmap2hash_x2  = {regmap2hash_x[(XLEN*4)+:XLEN],  regmap2hash_x[(XLEN*5)+:XLEN]};
-assign regmap2hash_x3  = {regmap2hash_x[(XLEN*6)+:XLEN],  regmap2hash_x[(XLEN*7)+:XLEN]};
-assign regmap2hash_x4  = {regmap2hash_x[(XLEN*8)+:XLEN],  regmap2hash_x[(XLEN*9)+:XLEN]};
-assign regmap2hash_x5  = {regmap2hash_x[(XLEN*10)+:XLEN], regmap2hash_x[(XLEN*11)+:XLEN]};
-assign regmap2hash_x6  = {regmap2hash_x[(XLEN*12)+:XLEN], regmap2hash_x[(XLEN*13)+:XLEN]};
-assign regmap2hash_x7  = {regmap2hash_x[(XLEN*14)+:XLEN], regmap2hash_x[(XLEN*15)+:XLEN]};
-assign regmap2hash_x8  = {regmap2hash_x[(XLEN*16)+:XLEN], regmap2hash_x[(XLEN*17)+:XLEN]};
-assign regmap2hash_x9  = {regmap2hash_x[(XLEN*18)+:XLEN], regmap2hash_x[(XLEN*19)+:XLEN]};
-assign regmap2hash_x10 = {regmap2hash_x[(XLEN*20)+:XLEN], regmap2hash_x[(XLEN*21)+:XLEN]};
-assign regmap2hash_x11 = {regmap2hash_x[(XLEN*22)+:XLEN], regmap2hash_x[(XLEN*23)+:XLEN]};
-assign regmap2hash_x12 = {regmap2hash_x[(XLEN*24)+:XLEN], regmap2hash_x[(XLEN*25)+:XLEN]};
-assign regmap2hash_x13 = {regmap2hash_x[(XLEN*26)+:XLEN], regmap2hash_x[(XLEN*27)+:XLEN]};
-assign regmap2hash_x14 = {regmap2hash_x[(XLEN*28)+:XLEN], regmap2hash_x[(XLEN*29)+:XLEN]};
-assign regmap2hash_x15 = {regmap2hash_x[(XLEN*30)+:XLEN], regmap2hash_x[(XLEN*31)+:XLEN]};
+assign regmap2hash_x0  = {regmap2hash_x[(XLEN*1)+:XLEN],  regmap2hash_x[(XLEN*0)+:XLEN]};
+assign regmap2hash_x1  = {regmap2hash_x[(XLEN*3)+:XLEN],  regmap2hash_x[(XLEN*2)+:XLEN]};
+assign regmap2hash_x2  = {regmap2hash_x[(XLEN*5)+:XLEN],  regmap2hash_x[(XLEN*4)+:XLEN]};
+assign regmap2hash_x3  = {regmap2hash_x[(XLEN*7)+:XLEN],  regmap2hash_x[(XLEN*6)+:XLEN]};
+assign regmap2hash_x4  = {regmap2hash_x[(XLEN*9)+:XLEN],  regmap2hash_x[(XLEN*8)+:XLEN]};
+assign regmap2hash_x5  = {regmap2hash_x[(XLEN*11)+:XLEN], regmap2hash_x[(XLEN*10)+:XLEN]};
+assign regmap2hash_x6  = {regmap2hash_x[(XLEN*13)+:XLEN], regmap2hash_x[(XLEN*12)+:XLEN]};
+assign regmap2hash_x7  = {regmap2hash_x[(XLEN*15)+:XLEN], regmap2hash_x[(XLEN*14)+:XLEN]};
+assign regmap2hash_x8  = {regmap2hash_x[(XLEN*17)+:XLEN], regmap2hash_x[(XLEN*16)+:XLEN]};
+assign regmap2hash_x9  = {regmap2hash_x[(XLEN*19)+:XLEN], regmap2hash_x[(XLEN*18)+:XLEN]};
+assign regmap2hash_x10 = {regmap2hash_x[(XLEN*21)+:XLEN], regmap2hash_x[(XLEN*20)+:XLEN]};
+assign regmap2hash_x11 = {regmap2hash_x[(XLEN*23)+:XLEN], regmap2hash_x[(XLEN*22)+:XLEN]};
+assign regmap2hash_x12 = {regmap2hash_x[(XLEN*25)+:XLEN], regmap2hash_x[(XLEN*24)+:XLEN]};
+assign regmap2hash_x13 = {regmap2hash_x[(XLEN*27)+:XLEN], regmap2hash_x[(XLEN*26)+:XLEN]};
+assign regmap2hash_x14 = {regmap2hash_x[(XLEN*29)+:XLEN], regmap2hash_x[(XLEN*28)+:XLEN]};
+assign regmap2hash_x15 = {regmap2hash_x[(XLEN*31)+:XLEN], regmap2hash_x[(XLEN*30)+:XLEN]};
 
 assign hash2regmap_y = {hash2regmap_y0, hash2regmap_y1, hash2regmap_y2, hash2regmap_y3,
                         hash2regmap_y4, hash2regmap_y5, hash2regmap_y6, hash2regmap_y7};

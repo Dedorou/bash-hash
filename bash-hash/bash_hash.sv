@@ -117,6 +117,12 @@ logic [SLEN-1:0] bash_f_c_o;
 logic [SLEN-1:0] bash_f_c_ff;
 logic [SLEN-1:0] bash_f_c_mux;
 
+logic [XLEN-1:0] l_sh;
+logic [XLEN-1:0] l_byte_rev;
+logic [SLEN-1:0] l_res;
+logic            l_256_en;
+logic            l_192_en;
+
 assign bash_f_c_mux = (BASH_F_INIT & {SLEN{start_i}})
                     | (bash_f_c_o  & {SLEN{work_i}});
 
@@ -131,12 +137,12 @@ bash_f_c bash_f_c (
   .c_o(bash_f_c_o)
 );
 
-logic l_192_en;
-logic l_256_en;
+assign l_sh  = l_i >> 2;
+assign l_byte_rev = {<<8{l_sh}};
+assign l_res = {l_byte_rev, {XLEN{1'b0}}};
 
-assign l_192_en = ~(l_i[1] ^  l_i[0]);
-assign l_256_en = ~(l_i[1] & ~l_i[0]);
-
+assign l_256_en = (l_i[8] | ~l_i[7] | ~l_i[6]);
+assign l_192_en = ((l_i[8] | ~l_i[7] | ~l_i[6]) & (~l_i[8] | l_i[7] | l_i[6]));
 
 assign bash_f0_mux  = (x0_i      & {SLEN{start_i}})
                     | (bash_f0_o & {SLEN{work_i}});
@@ -181,7 +187,7 @@ assign bash_f20_mux = (bash_f20_o & {SLEN{work_i}});
 assign bash_f21_mux = (bash_f21_o & {SLEN{work_i}});
 assign bash_f22_mux = (bash_f22_o & {SLEN{work_i}});
 
-assign bash_f23_mux = (64'h2000000000000000 & {SLEN{prep_i}})
+assign bash_f23_mux = ((l_res) & {SLEN{prep_i}})
                     | (bash_f23_o & {SLEN{work_i}});
 
 
