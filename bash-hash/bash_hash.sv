@@ -7,8 +7,9 @@ module bash_hash
   input  logic            prep_i,
   input  logic            start_i,
   input  logic            work_i,
+  input  logic            first_i,
   
-  input  logic [1:0]      l_i,
+  input  logic [XLEN-1:0] l_i,
 
   input  logic [SLEN-1:0] x0_i,
   input  logic [SLEN-1:0] x1_i,
@@ -155,22 +156,22 @@ assign bash_f7_mux  = (x7_i      & {SLEN{start_i}})
                     | (bash_f7_o & {SLEN{work_i}});
 
 assign bash_f8_mux  = (x8_i       & {SLEN{start_i & l_192_en}})
-                    | (bash_f8_o  & {SLEN{work_i}});
+                    | (bash_f8_o  & {SLEN{work_i  & ~first_i}});
 assign bash_f9_mux  = (x9_i       & {SLEN{start_i & l_192_en}})
-                    | (bash_f9_o  & {SLEN{work_i}});
+                    | (bash_f9_o  & {SLEN{work_i  & ~first_i}});
 assign bash_f10_mux = (x10_i      & {SLEN{start_i & l_192_en}})
-                    | (bash_f10_o & {SLEN{work_i}});
+                    | (bash_f10_o & {SLEN{work_i  & ~first_i}});
 assign bash_f11_mux = (x11_i      & {SLEN{start_i & l_192_en}})
-                    | (bash_f11_o & {SLEN{work_i}});
+                    | (bash_f11_o & {SLEN{work_i  & ~first_i}});
 
 assign bash_f12_mux = (x12_i      & {SLEN{start_i & l_256_en}})
-                    | (bash_f12_o & {SLEN{work_i}});
+                    | (bash_f12_o & {SLEN{work_i  & ~first_i}});
 assign bash_f13_mux = (x13_i      & {SLEN{start_i & l_256_en}})
-                    | (bash_f13_o & {SLEN{work_i}});
+                    | (bash_f13_o & {SLEN{work_i  & ~first_i}});
 assign bash_f14_mux = (x14_i      & {SLEN{start_i & l_256_en}})
-                    | (bash_f14_o & {SLEN{work_i}});
+                    | (bash_f14_o & {SLEN{work_i  & ~first_i}});
 assign bash_f15_mux = (x15_i      & {SLEN{start_i & l_256_en}})
-                    | (bash_f15_o & {SLEN{work_i}});
+                    | (bash_f15_o & {SLEN{work_i  & ~first_i}});
 
 assign bash_f16_mux = (bash_f16_o & {SLEN{work_i}});
 assign bash_f17_mux = (bash_f17_o & {SLEN{work_i}});
@@ -202,9 +203,9 @@ always_ff @(posedge clk_i) begin
     bash_f13_ff <= bash_f13_mux;
     bash_f14_ff <= bash_f14_mux;
     bash_f15_ff <= bash_f15_mux;
-    bash_f16_ff <= bash_f16_mux;
   end
-  if (start_i | work_i) begin 
+  if (prep_i | work_i) begin 
+    bash_f16_ff <= bash_f16_mux;
     bash_f17_ff <= bash_f17_mux;
     bash_f18_ff <= bash_f18_mux;
     bash_f19_ff <= bash_f19_mux;
@@ -267,14 +268,14 @@ bash_f bash_f(
   .s23_o(bash_f23_o)
 );
 
-assign y0_o = bash_f0_o;
-assign y1_o = bash_f1_o;
-assign y2_o = bash_f2_o;
-assign y3_o = bash_f3_o;
-assign y4_o = bash_f4_o;
-assign y5_o = bash_f5_o;
-assign y6_o = bash_f6_o;
-assign y7_o = bash_f7_o;
+assign y0_o = bash_f0_ff;
+assign y1_o = bash_f1_ff;
+assign y2_o = bash_f2_ff;
+assign y3_o = bash_f3_ff;
+assign y4_o = bash_f4_ff;
+assign y5_o = bash_f5_ff;
+assign y6_o = bash_f6_ff;
+assign y7_o = bash_f7_ff;
 
 endmodule
 

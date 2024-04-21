@@ -1,4 +1,4 @@
-module bash_f_const (
+module bash_f_const_old (
   input  logic          clk,
   input  logic [63 : 0] data_i,
   output logic [63 : 0] data_o
