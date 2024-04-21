@@ -34,6 +34,7 @@ always_ff @(posedge clk_i) begin
     l_reg <= wrdata_i;
 end
 
+assign l_reg_o = l_reg;
 assign prep_o  = (addr_i == PREP_ADDR)  & (|we_i) & en_i;
 assign start_o = (addr_i == START_ADDR) & (|we_i) & en_i;
 
