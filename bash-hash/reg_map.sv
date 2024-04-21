@@ -24,13 +24,17 @@ logic [XLEN-1:0] y_reg [0:15];
 logic [XLEN-1:0] l_reg;
 
 always_ff @(posedge clk_i) begin
-  if (!addr_i[7] & (&we_i) & en_i) begin 
+  if (rst_i) begin 
+    x_reg <= 0;
+  end else if (!addr_i[7] & (&we_i) & en_i) begin 
     x_reg[addr_i[6:2]] <= wrdata_i;
   end
 end
 
 always_ff @(posedge clk_i) begin 
-  if ((addr_i == L_ADDR) & (&we_i) & en_i)
+  if (rst_i) begin 
+    l_reg <= 0;
+  end if ((addr_i == L_ADDR) & (&we_i) & en_i)
     l_reg <= wrdata_i;
 end
 

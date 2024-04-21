@@ -143,7 +143,6 @@ bash_hash_cu bash_hash_cu (
 
 bash_hash bash_hash(
   .clk_i   (clk),
-  .rst_i   (rst),
   .prep_i  (cu2hash_prep),
   .start_i (cu2hash_start),
   .work_i  (cu2hash_work),

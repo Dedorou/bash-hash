@@ -2,7 +2,6 @@ module bash_hash
   import bash_hash_params_pkg::*;
 (
   input  logic            clk_i,
-  input  logic            rst_i,
    
   input  logic            prep_i,
   input  logic            start_i,
