@@ -81,9 +81,10 @@ bash_f_iter bash_f (
 );
 
 always #50 clk = ~clk;
+  integer i;
 
 initial begin
-  $display("Bash-s test");
+  $display("Bash-f test");
 
   s0_i  = bash_f_i[0];
   s1_i  = bash_f_i[1];
@@ -113,35 +114,18 @@ initial begin
   data_sel = 0;
 
   $display("Input data:");
-
-  $display("s0=0x%0h", s0_i);
-  $display("s1=0x%0h", s1_i);
-  $display("s2=0x%0h", s2_i);
-  $display("s3=0x%0h", s3_i);
-  $display("s4=0x%0h", s4_i);
-  $display("s5=0x%0h", s5_i);
-  $display("s6=0x%0h", s6_i);
-  $display("s7=0x%0h", s7_i);
-  $display("s8=0x%0h", s8_i);
-  $display("s9=0x%0h", s9_i);
-  $display("s10=0x%0h", s10_i);
-  $display("s11=0x%0h", s11_i);
-  $display("s12=0x%0h", s12_i);
-  $display("s13=0x%0h", s13_i);
-  $display("s14=0x%0h", s14_i);
-  $display("s15=0x%0h", s15_i);
-  $display("s16=0x%0h", s16_i);
-  $display("s17=0x%0h", s17_i);
-  $display("s18=0x%0h", s18_i);
-  $display("s19=0x%0h", s19_i);
-  $display("s20=0x%0h", s20_i);
-  $display("s21=0x%0h", s21_i);
-  $display("s22=0x%0h", s22_i);
-  $display("s23=0x%0h", s23_i);
+  $display("s0=0x%0h, s1=0x%0h, s2=0x%0h", s0_i, s1_i, s2_i);
+  $display("s3=0x%0h, s4=0x%0h, s5=0x%0h", s3_i, s4_i, s5_i);
+  $display("s6=0x%0h, s7=0x%0h, s8=0x%0h", s6_i, s7_i, s8_i);
+  $display("s9=0x%0h, s10=0x%0h, s11=0x%0h", s9_i, s10_i, s11_i);
+  $display("s12=0x%0h, s13=0x%0h, s14=0x%0h", s12_i, s13_i, s14_i);
+  $display("s15=0x%0h, s16=0x%0h, s17=0x%0h", s15_i, s16_i, s17_i);
+  $display("s18=0x%0h, s19=0x%0h, s20=0x%0h", s18_i, s19_i, s20_i);
+  $display("s21=0x%0h, s22=0x%0h, s23=0x%0h", s21_i, s22_i, s23_i);
 
   #100;
   
-  $monitor("time=%0t, s0=0x%0h", $time, s0_o);
+/*  $monitor("time=%0t, s0=0x%0h", $time, s0_o);
   $monitor("time=%0t, s1=0x%0h", $time, s1_o);
   $monitor("time=%0t, s2=0x%0h", $time, s2_o);
   $monitor("time=%0t, s3=0x%0h", $time, s3_o);
@@ -164,62 +148,27 @@ initial begin
   $monitor("time=%0t, s20=0x%0h", $time, s20_o);
   $monitor("time=%0t, s21=0x%0h", $time, s21_o);
   $monitor("time=%0t, s22=0x%0h", $time, s22_o);
-  $monitor("time=%0t, s23=0x%0h", $time, s23_o);
+  $monitor("time=%0t, s23=0x%0h", $time, s23_o);*/
 
   #100;
   data_sel = 1;
   #(100*23);
   $display("Output data:");
-  $display("s0=0x%0h", s0_i);
-  $display("s1=0x%0h", s1_o);
-  $display("s2=0x%0h", s2_o);
-  $display("s3=0x%0h", s3_o);
-  $display("s4=0x%0h", s4_o);
-  $display("s5=0x%0h", s5_o);
-  $display("s6=0x%0h", s6_o);
-  $display("s7=0x%0h", s7_o);
-  $display("s8=0x%0h", s8_o);
-  $display("s9=0x%0h", s9_o);
-  $display("s10=0x%0h", s10_o);
-  $display("s11=0x%0h", s11_o);
-  $display("s12=0x%0h", s12_o);
-  $display("s13=0x%0h", s13_o);
-  $display("s14=0x%0h", s14_o);
-  $display("s15=0x%0h", s15_o);
-  $display("s16=0x%0h", s16_o);
-  $display("s17=0x%0h", s17_o);
-  $display("s18=0x%0h", s18_o);
-  $display("s19=0x%0h", s19_o);
-  $display("s20=0x%0h", s20_o);
-  $display("s21=0x%0h", s21_o);
-  $display("s22=0x%0h", s22_o);
-  $display("s23=0x%0h", s23_o);
+  $display("s0=0x%0h, s1=0x%0h, s2=0x%0h", s0_o, s1_o, s2_o);
+  $display("s3=0x%0h, s4=0x%0h, s5=0x%0h", s3_o, s4_o, s5_o);
+  $display("s6=0x%0h, s7=0x%0h, s8=0x%0h", s6_o, s7_o, s8_o);
+  $display("s9=0x%0h, s10=0x%0h, s11=0x%0h", s9_o, s10_o, s11_o);
+  $display("s12=0x%0h, s13=0x%0h, s14=0x%0h", s12_o, s13_o, s14_o);
+  $display("s15=0x%0h, s16=0x%0h, s17=0x%0h", s15_o, s16_o, s17_o);
+  $display("s18=0x%0h, s19=0x%0h, s20=0x%0h", s18_o, s19_o, s20_o);
+  $display("s21=0x%0h, s22=0x%0h, s23=0x%0h", s21_o, s22_o, s23_o);
+
 
   $display("Should be:");
-  $display("s0=0x%0h", bash_f_o[0]);
-  $display("s1=0x%0h", bash_f_o[1]);
-  $display("s2=0x%0h", bash_f_o[2]);
-  $display("s3=0x%0h", bash_f_o[3]);
-  $display("s4=0x%0h", bash_f_o[4]);
-  $display("s5=0x%0h", bash_f_o[5]);
-  $display("s6=0x%0h", bash_f_o[6]);
-  $display("s7=0x%0h", bash_f_o[7]);
-  $display("s8=0x%0h", bash_f_o[8]);
-  $display("s9=0x%0h", bash_f_o[9]);
-  $display("s10=0x%0h", bash_f_o[10]);
-  $display("s11=0x%0h", bash_f_o[11]);
-  $display("s12=0x%0h", bash_f_o[12]);
-  $display("s13=0x%0h", bash_f_o[13]);
-  $display("s14=0x%0h", bash_f_o[14]);
-  $display("s15=0x%0h", bash_f_o[15]);
-  $display("s16=0x%0h", bash_f_o[16]);
-  $display("s17=0x%0h", bash_f_o[17]);
-  $display("s18=0x%0h", bash_f_o[18]);
-  $display("s19=0x%0h", bash_f_o[19]);
-  $display("s20=0x%0h", bash_f_o[20]);
-  $display("s21=0x%0h", bash_f_o[21]);
-  $display("s22=0x%0h", bash_f_o[22]);
-  $display("s23=0x%0h", bash_f_o[23]);
+  for (i = 0; i < 24; i = i + 3) begin
+    $display("s%0d=0x%0h, s%0d=0x%0h, s%0d=0x%0h", i, bash_f_o[i], i+1, bash_f_o[i+1], i+2, bash_f_o[i+2]);
+  end
+
   if (compare({s0_o,  s1_o,  s2_o,  s3_o,  s4_o,  s5_o,  s6_o,  s7_o,
                s8_o,  s9_o,  s10_o, s11_o, s12_o, s13_o, s14_o, s15_o,
                s16_o, s17_o, s18_o, s19_o, s20_o, s21_o, s22_o, s23_o})) begin 
