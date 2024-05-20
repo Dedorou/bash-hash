@@ -2,7 +2,7 @@ module bash_hash_verilog_wrapper (
   input         s_axi_aclk,
   input         s_axi_aresetn,
   
-  input  [7:0]  s_axi_awaddr,
+  input  [15:0]  s_axi_awaddr,
   input  [2:0]  s_axi_awprot,
   input         s_axi_awvalid,
   output        s_axi_awready,        
@@ -16,7 +16,7 @@ module bash_hash_verilog_wrapper (
   output        s_axi_bvalid,
   input         s_axi_bready,   
   
-  input  [7:0]  s_axi_araddr,
+  input  [15:0]  s_axi_araddr,
   input  [2:0]  s_axi_arprot,
   input         s_axi_arvalid,
   output        s_axi_arready,

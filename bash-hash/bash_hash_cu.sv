@@ -19,7 +19,7 @@ logic       set_cnt;
 
 always_ff @(posedge clk_i) begin 
   if (set_cnt | rst_i) begin 
-    cnt <= 5'd21;
+    cnt <= 5'd22;
   end else if (work_o) begin 
     cnt <= cnt - 1;
   end

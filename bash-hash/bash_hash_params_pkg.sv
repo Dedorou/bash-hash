@@ -2,7 +2,7 @@ package bash_hash_params_pkg;
 
 // AXI4-Lite controller 
   localparam XLEN            = 32;
-  localparam ADDRLEN         = 8;
+  localparam ADDRLEN         = 16;
 
   localparam L_ADDR          = 8'hC0;
   localparam PREP_ADDR       = 8'hC4;
